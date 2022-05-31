@@ -27,6 +27,7 @@ pip install flask
 python app.py
 ```
 
-> Click the url and open in browser
+> Click the url and open in browser, and you'll see the homepage
 
 ![](https://github.com/fingerk28/NFT-Profitter/blob/master/pic/terminal.png)
+![](https://github.com/fingerk28/NFT-Profitter/blob/master/pic/homepage.png)
