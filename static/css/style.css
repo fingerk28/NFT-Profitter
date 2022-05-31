@@ -1,0 +1,73 @@
+/* font-family: 'Raleway', sans-serif; */
+
+h1 {
+    background-color: #444444;
+    color: #a14e70;
+    padding: 20px;
+    text-align: center;
+    /* margin: 20px auto; */
+}
+
+.block {
+    margin: 10px auto;
+    padding: 20px;
+    margin: 10px;
+    width: 355px;
+    height: 550px;
+}
+
+.block.trade {
+    border: #ffbbd7 solid 3px;
+}
+
+.block.whale {
+    border: #99d5f8 solid 3px;
+}
+
+.home {
+    /* border: #bbb solid 1px; */
+    margin: auto;
+    width: 1000px;
+}
+
+.form {
+    margin: 50px auto;
+}
+
+/* input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+
+.info {
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 10px;
+}
+
+.profit {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+body {
+    background-color: #444444;
+    width: 100%;
+}
+
+.body {
+    margin: 20px auto;
+}
+
+.address {
+    text-align: center;
+}
+
+.mycard {
+    margin-bottom: 30px;
+}
+
+.whale_list {
+    width: 800px;
+    margin: 100px auto;
+}
