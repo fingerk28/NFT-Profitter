@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block main %}
+{% set i = 0 %}
+    <div class="body">
+        <div class="leaderboard row row-cols-1 row-cols-md-3 g-4">
+            {% for item in leaderboard %}
+                <div class="col">
+                    <div class="card bg-dark text-white h-100">
+                        <img src="{{ item[1] }}" class="card-img" alt="{{item[0]}}">
+                        <div class="card-img-overlay">
+                            <div class="r" style="background-color: rgba(255, 255, 255, 0.3); padding: 10px;">
+                                <h5 class="card-title">No.{{loop.index}}</h5>
+                                <p class="card-text">{{item[0]}}</p>
+                                <p class="card-text">Net Profit: {{item[2]}}eth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-9">
+                <div class="info">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="card-grid">
+                        {% for token_name, dict in nft_dict.items() %}
+                            {% for token_ID, info in dict.items() %}
+                                {% set i = i + 1 %}
+                                <div class="mycard col-sm-3">
+                                    <div class="card h-100">
+                                        <img src="{{info['image_url']}}" class="card-img-top" id="pic_{{i}}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{token_name}}</h5>
+                                            <h5 class="card-title">#{{token_ID}}</h5>
+                                            <p class="card-text">Buy Price: {{info['buy_price']}}</p>
+                                            <p class="card-text">Sell Price: {{info['sell_price']}}</p>
+                                            <p class="card-text">Floor Price: {{info['floor_price']}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <div class="profit">
+                    <table class="table">
+                        <h4 style="color: #ffc41b"><b>INFO</b></h4>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Realized Income</th>
+                                <td>{{trade_info['Realized income']}} eth</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Realized Cost</th>
+                                <td>{{trade_info['Realized cost']}} eth</td>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="row">Realized Profit</th>
+                                <td>{{trade_info['Realized profit']}} eth</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Unrealized Income</th>
+                                <td>{{trade_info['Unrealized income']}} eth</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Unrealized Cost</th>
+                                <td>{{trade_info['Unrealized cost']}} eth</td>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="row">Unrealized Profit</th>
+                                <td>{{trade_info['Unrealized profit']}} eth</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total Income</th>
+                                <td>{{trade_info['Total income']}} eth</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total Cost</th>
+                                <td>{{trade_info['Total cost']}} eth</td>
+                            </tr>
+                            <tr class="table-warning">
+                                <th scope="row">Total Gas</th>
+                                <td>{{total_gas}} eth</td>
+                            </tr>
+                            <tr class="table-info">
+                                <th scope="row">Total Profit</th>
+                                <td>{{trade_info['Total profit']}} eth</td>
+                            </tr>
+                            <tr class="table-success">
+                                <th scope="row">Winning Percentage</th>
+                                <td>{{trade_info['Winning percentage']}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form method='post' action="{{ url_for('home') }}">  
+                        <button type="summit" class="btn btn-secondary">Home</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            setInterval("refreshPic()", 2000)
+        });
+
+        var length = {{ i }};
+        var arr = []
+        for (var j = 0; j < length; j++) {
+            arr.push(document.getElementById("pic_" + j).getAttribute("src"));
+        }        
+
+        function refreshPic() {
+            for (var j = 0; j < length; j++) {
+                $("#pic_" + j).attr('src', arr[j] + "?" + Math.random());
+            }
+            console.log("hi");
+        };
+    </script>
+    
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main %}
+{% set i = 0 %}
+    <div class="whale_list">
+        <div>
+            <table class="table">
+                <h4 style="color: #99d5f8"><b>Whale List</b></h4>
+                <thead>
+                    <tr>
+                      <th scope="col">Wallet Address</th>
+                      <th scope="col">Total profit</th>
+                      <th scope="col">Winning percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for k, v in whale_dict.items() %}
+                        <tr>
+                            <td>{{k}}</th>
+                            <td>{{whale_dict[k]['Total profit']}} eth</td>
+                            <td>{{whale_dict[k]['Winning percentage']}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <form method='post' action="{{ url_for('home') }}">  
+                <button type="summit" class="btn btn-secondary">Home</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
